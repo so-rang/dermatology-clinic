@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-06-12T16:11:42+09:00",
+  "options": {
+    "size": "1024x1024",
+    "quality": "medium",
+    "count": 1
+  },
+  "cost_estimate_usd": 0.03,
+  "runs": [
+    {
+      "vendor": "codex",
+      "model": "gpt-image-2",
+      "strategy": "codex-exec-oauth",
+      "strategy_attempts": [
+        {
+          "strategy": "codex-exec-oauth",
+          "status": "ok",
+          "duration_ms": 91741
+        }
+      ],
+      "files": [
+        "/Users/sorang/Desktop/hospital/dermatology-clinic/public/images/equipment/_rejuran/codex-gpt-image-2-9taf5r.png"
+      ],
+      "duration_ms": 91759,
+      "status": "ok"
+    }
+  ],
+  "prompt": "Reference E-INJECTOR-2026-06. Macro still life of a single sterile injection pen for skin booster treatment. Slim chrome and matte white cylindrical body, engraved measurement marks, slim 33G needle pointing diagonally, ONE crystal clear droplet at the needle tip catching warm golden rim light, resting on a clean linen-texture matte off-white tray. Warm terracotta side light, deep shadow background. NO PEOPLE NO HUMAN FACES. Editorial medical product, ultra detailed shallow depth of field."
+}

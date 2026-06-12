@@ -91,7 +91,7 @@ export function Hero() {
           >
             당신만을 위한
             <br />
-            피부의 공방.
+            피부의 공방
           </motion.h1>
 
           <motion.div
