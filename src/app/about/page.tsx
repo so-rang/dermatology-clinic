@@ -47,7 +47,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About · 의료진과 공간",
-  description: "앤리에 의원의 전문의 3인과 청담동의 공방을 소개합니다.",
+  description: "정단아 의원의 전문의 3인과 청담동의 공방을 소개합니다.",
 };
 
 export default function AboutPage() {
@@ -73,7 +73,7 @@ export default function AboutPage() {
             네 명의 전문의가 닿습니다.
           </h1>
           <p className="mt-6 max-w-2xl text-base text-ink-soft md:text-lg">
-            앤리에 의원은 시간을 두고 피부를 읽고, 매번 다른 처방을 설계합니다.
+            정단아 의원은 시간을 두고 피부를 읽고, 매번 다른 처방을 설계합니다.
             상담실장이 아닌, 전문의가 직접 진료합니다.
           </p>
         </header>
@@ -170,7 +170,7 @@ export default function AboutPage() {
             위해 처방을 설계하는 이유입니다.”
           </p>
           <p className="mt-6 font-display text-sm italic text-ink-soft">
-            — 정연우, M.D. · 대표원장
+            — 정단아, M.D. · 대표원장
           </p>
         </section>
 

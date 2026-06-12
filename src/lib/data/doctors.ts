@@ -9,9 +9,9 @@ export type Doctor = {
 
 export const doctors: readonly Doctor[] = [
   {
-    id: "jung-yeon-woo",
-    nameKo: "정연우",
-    nameEn: "Jung Yeon-Woo, M.D.",
+    id: "jung-dan-a",
+    nameKo: "정단아",
+    nameEn: "Jung Dan-A, M.D.",
     title: "대표원장",
     image: "/images/doctors/jung.png",
     credentials: [

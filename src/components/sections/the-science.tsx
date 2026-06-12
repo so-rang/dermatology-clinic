@@ -55,8 +55,8 @@ export function TheScience() {
           <div className="md:col-span-2">
             <div className="relative aspect-[3/4] w-full overflow-hidden">
               <Image
-                src={abstractVisuals.serum.src}
-                alt={abstractVisuals.serum.alt}
+                src={abstractVisuals.serumGlass.src}
+                alt={abstractVisuals.serumGlass.alt}
                 fill
                 sizes="(min-width: 768px) 40vw, 100vw"
                 className="object-cover"

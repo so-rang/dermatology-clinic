@@ -9,7 +9,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Atelier 프로토콜 · 진료",
   description:
-    "진단 → 재생 → 회복 → 유지. 앤리에 의원의 네 단계 처방 시스템.",
+    "진단 → 재생 → 회복 → 유지. 정단아 의원의 네 단계 처방 시스템.",
 };
 
 export default function TreatmentsPage() {

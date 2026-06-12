@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "엘란세",
     "스킨보톡스",
     "전문의 직접 진료",
-    "앤리에 의원",
+    "정단아 의원",
   ],
   authors: [{ name: clinic.nameKo }],
   openGraph: {

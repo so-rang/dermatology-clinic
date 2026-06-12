@@ -1,6 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { clinic } from "@/lib/data/clinic";
+import { stillVisuals } from "@/lib/data/visuals";
 
 export function ReservationCta() {
   return (
@@ -12,7 +14,17 @@ export function ReservationCta() {
             "radial-gradient(70% 80% at 20% 50%, #E8C8B655 0%, transparent 60%), radial-gradient(60% 70% at 80% 40%, #D9E4DC55 0%, transparent 65%), #FAF8F4",
         }}
       />
-      <div className="mx-auto max-w-[1280px] px-6 py-28 md:px-10 md:py-36 lg:px-20">
+      <div className="pointer-events-none absolute right-0 top-0 hidden h-full w-1/3 opacity-90 md:block">
+        <Image
+          src={stillVisuals.leaves.src}
+          alt=""
+          fill
+          sizes="33vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-bg-base via-bg-base/60 to-transparent" />
+      </div>
+      <div className="relative mx-auto max-w-[1280px] px-6 py-28 md:px-10 md:py-36 lg:px-20">
         <div className="max-w-3xl">
           <span className="font-display tracking-brand text-xs text-terra">
             RESERVATION
