@@ -34,24 +34,26 @@ export function SiteNav() {
           : "bg-transparent",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-6 md:h-20 md:px-10 lg:px-20">
+      <div className="mx-auto flex h-12 max-w-[1280px] items-center justify-between px-6 md:h-14 md:px-10 lg:px-20">
         <Link href="/" className="flex items-baseline gap-2">
-          <span className="font-display text-xl italic text-ink">Atelier</span>
-          <span className="hidden text-[11px] tracking-brand text-ink-soft md:inline">
-            {clinic.districtKo}
+          <span className="font-display text-base italic text-ink md:text-lg">
+            Atelier
+          </span>
+          <span className="hidden text-[10px] tracking-brand text-ink-soft md:inline">
+            엔리에 · {clinic.districtKo}
           </span>
         </Link>
-        <nav className="hidden items-center gap-9 md:flex">
+        <nav className="hidden items-center gap-7 md:flex">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-xs tracking-[0.18em] uppercase text-ink-soft transition-colors hover:text-ink"
+              className="text-[11px] tracking-[0.18em] uppercase text-ink-soft transition-colors hover:text-ink"
             >
               {item.label}
             </Link>
           ))}
-          <Button asChild size="sm" variant="terra">
+          <Button asChild size="sm" variant="terra" className="h-8 px-4 text-xs">
             <Link href="/#reservation">상담 예약</Link>
           </Button>
         </nav>

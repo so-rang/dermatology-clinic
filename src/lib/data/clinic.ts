@@ -1,5 +1,5 @@
 export const clinic = {
-  nameKo: "앤리에 의원",
+  nameKo: "엔리에 의원",
   nameEn: "Atelier Dermatology",
   tagline: "당신만을 위한 피부의 공방.",
   shortConcept: "당신만을 위한 피부의 공방",

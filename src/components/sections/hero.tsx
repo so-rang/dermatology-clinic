@@ -70,7 +70,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="font-display text-xs tracking-brand text-terra md:text-sm"
         >
-          ATELIER · DERMATOLOGY · {clinic.district.toUpperCase()}
+          엔리에 · ATELIER DERMATOLOGY · {clinic.district.toUpperCase()}
         </motion.span>
 
         <div className="my-8 flex flex-1 flex-col justify-center md:my-12">
@@ -115,7 +115,7 @@ export function Hero() {
             className="mt-10 flex flex-wrap gap-3"
           >
             <Button asChild variant="terra" size="lg">
-              <Link href="#protocol">Atelier 프로토콜 보기</Link>
+              <Link href="#protocol">당신의 4단계 처방</Link>
             </Button>
             <Button
               asChild

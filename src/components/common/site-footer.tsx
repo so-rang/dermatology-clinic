@@ -7,6 +7,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-[1280px] gap-12 px-6 py-16 md:grid-cols-4 md:px-10 lg:px-20">
         <div className="md:col-span-2">
           <p className="font-display text-2xl italic text-ink">Atelier</p>
+          <p className="font-serif-ko mt-1 text-lg text-ink">엔리에 의원</p>
           <p className="mt-2 text-xs tracking-brand text-ink-soft">
             Dermatology · Cheongdam
           </p>
