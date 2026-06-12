@@ -4,7 +4,7 @@ import { doctors } from "@/lib/data/doctors";
 
 export function DoctorsPreview() {
   return (
-    <section className="bg-bg-soft">
+    <section id="doctors" className="bg-bg-soft">
       <div className="mx-auto max-w-[1280px] px-6 py-24 md:px-10 md:py-32 lg:px-20">
         <header className="mb-12 flex flex-col gap-3 md:mb-16 md:flex-row md:items-end md:justify-between">
           <div>
@@ -16,10 +16,10 @@ export function DoctorsPreview() {
             </h2>
           </div>
           <Link
-            href="/about"
+            href="#space"
             className="text-xs tracking-brand text-ink-soft hover:text-ink"
           >
-            의료진 더 보기 →
+            공간 보러가기 →
           </Link>
         </header>
 

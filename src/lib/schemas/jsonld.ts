@@ -11,7 +11,7 @@ export function medicalClinicLd() {
     "@type": "MedicalClinic",
     name: clinic.nameKo,
     alternateName: clinic.nameEn,
-    description: `${clinic.tagline} 청담동 피부과, 전문의 3인 직접 진료.`,
+    description: `${clinic.tagline} 청담 피부과, 전문의 3인 직접 진료.`,
     url: BASE,
     telephone: clinic.phone,
     email: clinic.email,

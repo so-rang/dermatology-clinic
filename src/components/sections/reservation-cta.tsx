@@ -6,7 +6,7 @@ import { stillVisuals } from "@/lib/data/visuals";
 
 export function ReservationCta() {
   return (
-    <section className="relative isolate overflow-hidden bg-bg-base">
+    <section id="reservation" className="relative isolate overflow-hidden bg-bg-base">
       <div
         className="absolute inset-0 -z-10 opacity-90"
         style={{
@@ -39,7 +39,7 @@ export function ReservationCta() {
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-3">
             <Button asChild variant="terra" size="lg">
-              <Link href="/reservation">30분 무료 상담 예약</Link>
+              <Link href={clinic.kakaoChannel}>30분 무료 상담 예약</Link>
             </Button>
             <Button asChild variant="ghost" size="lg">
               <Link href={clinic.kakaoChannel}>카카오톡 문의</Link>

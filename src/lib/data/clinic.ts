@@ -1,10 +1,10 @@
 export const clinic = {
-  nameKo: "정단아 의원",
+  nameKo: "앤리에 의원",
   nameEn: "Atelier Dermatology",
   tagline: "당신만을 위한 피부의 공방.",
   shortConcept: "당신만을 위한 피부의 공방",
   district: "Cheongdam",
-  districtKo: "청담동",
+  districtKo: "청담",
   address: "서울 강남구 압구정로 412",
   addressFull: "서울 강남구 압구정로 412, 청담동",
   phone: "02-540-1300",

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     default: `${clinic.nameKo} | ${clinic.nameEn}`,
     template: `%s | ${clinic.nameKo}`,
   },
-  description: `${clinic.tagline} 청담동 피부과, 전문의 3인 직접 진료. 안티에이징·리프팅·재생·관리의 네 단계 처방.`,
+  description: `${clinic.tagline} 청담 피부과, 전문의 3인 직접 진료. 안티에이징·리프팅·재생·관리의 네 단계 처방.`,
   keywords: [
     "청담 피부과",
     "안티에이징",
@@ -20,14 +20,14 @@ export const metadata: Metadata = {
     "엘란세",
     "스킨보톡스",
     "전문의 직접 진료",
-    "정단아 의원",
+    "앤리에 의원",
   ],
   authors: [{ name: clinic.nameKo }],
   openGraph: {
     type: "website",
     locale: "ko_KR",
     title: `${clinic.nameKo} — ${clinic.shortConcept}`,
-    description: `청담동 피부과, 전문의 3인 직접 진료. Diagnosis · Regeneration · Restoration · Maintenance.`,
+    description: `청담 피부과, 전문의 3인 직접 진료. Diagnosis · Regeneration · Restoration · Maintenance.`,
     siteName: clinic.nameKo,
   },
   twitter: {

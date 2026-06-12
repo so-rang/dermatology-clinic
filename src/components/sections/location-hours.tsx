@@ -3,7 +3,7 @@ import { Placeholder } from "@/components/common/placeholder";
 
 export function LocationHours() {
   return (
-    <section className="bg-bg-soft">
+    <section id="location" className="bg-bg-soft">
       <div className="mx-auto max-w-[1280px] px-6 py-24 md:px-10 md:py-32 lg:px-20">
         <header className="mb-12 md:mb-16">
           <span className="font-display tracking-brand text-xs text-terra">

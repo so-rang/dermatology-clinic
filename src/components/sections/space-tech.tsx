@@ -30,7 +30,7 @@ const equipment = [
 
 export function SpaceTech() {
   return (
-    <section className="bg-bg-base">
+    <section id="space" className="bg-bg-base">
       <div className="mx-auto max-w-[1280px] px-6 py-24 md:px-10 md:py-32 lg:px-20">
         <header className="mb-12 md:mb-16">
           <span className="font-display tracking-brand text-xs text-terra">

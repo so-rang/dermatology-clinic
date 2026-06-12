@@ -38,6 +38,7 @@ export function AtelierProtocol() {
 
   return (
     <section
+      id="protocol"
       className="bg-bg-base"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}

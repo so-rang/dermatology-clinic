@@ -10,7 +10,7 @@ export function FaqPreview() {
   const [open, setOpen] = useState<string | null>(faqsPreview[0]?.id ?? null);
 
   return (
-    <section className="bg-bg-base">
+    <section id="faq" className="bg-bg-base">
       <div className="mx-auto max-w-[1280px] px-6 py-24 md:px-10 md:py-32 lg:px-20">
         <div className="grid gap-10 md:grid-cols-12">
           <header className="md:col-span-4">
@@ -23,10 +23,10 @@ export function FaqPreview() {
               질문
             </h2>
             <Link
-              href="/faq"
+              href="#reservation"
               className="mt-8 inline-block text-xs tracking-brand text-ink-soft hover:text-ink"
             >
-              전체 FAQ 보기 →
+              상담으로 문의 →
             </Link>
           </header>
 

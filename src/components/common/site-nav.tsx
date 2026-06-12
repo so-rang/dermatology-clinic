@@ -7,10 +7,10 @@ import { clinic } from "@/lib/data/clinic";
 import { cn } from "@/lib/utils";
 
 const nav = [
-  { href: "/treatments", label: "Treatments" },
-  { href: "/about", label: "About" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/location", label: "Location" },
+  { href: "/#protocol", label: "Treatments" },
+  { href: "/#doctors", label: "About" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/#location", label: "Location" },
   { href: "/admin", label: "Admin" },
 ];
 
@@ -52,7 +52,7 @@ export function SiteNav() {
             </Link>
           ))}
           <Button asChild size="sm" variant="terra">
-            <Link href="/reservation">상담 예약</Link>
+            <Link href="/#reservation">상담 예약</Link>
           </Button>
         </nav>
         <button
@@ -79,7 +79,9 @@ export function SiteNav() {
               </Link>
             ))}
             <Button asChild size="sm" variant="terra">
-              <Link href="/reservation">상담 예약</Link>
+              <Link href="/#reservation" onClick={() => setOpen(false)}>
+                상담 예약
+              </Link>
             </Button>
           </nav>
         </div>
