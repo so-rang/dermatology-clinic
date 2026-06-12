@@ -1,5 +1,4 @@
 import { clinic } from "@/lib/data/clinic";
-import { Placeholder } from "@/components/common/placeholder";
 
 export function LocationHours() {
   return (
@@ -16,21 +15,19 @@ export function LocationHours() {
 
         <div className="grid gap-10 md:grid-cols-5 md:gap-12">
           <div className="md:col-span-3">
-            <div className="relative overflow-hidden">
-              <Placeholder
-                ratio="wide"
-                tone="sage"
-                label="Map"
-                caption="Cheongdam-dong"
+            <div className="relative aspect-[16/10] w-full overflow-hidden border border-line bg-bg-base">
+              <iframe
+                src={`https://maps.google.com/maps?q=${clinic.lat},${clinic.lng}&z=16&output=embed&hl=ko`}
+                className="absolute inset-0 h-full w-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title={`${clinic.nameKo} 위치 지도`}
+                allowFullScreen
               />
-              {/* Pin */}
-              <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                <div className="relative h-3 w-3 rounded-full bg-terra ring-4 ring-terra/20" />
-                <p className="mt-2 -translate-x-1/2 rounded-sm bg-ink px-3 py-1.5 text-[11px] tracking-brand text-bg-base">
-                  ATELIER
-                </p>
-              </div>
             </div>
+            <p className="mt-3 text-xs text-ink-mute">
+              {clinic.address} · {clinic.subway}
+            </p>
           </div>
 
           <div className="space-y-6 md:col-span-2">
