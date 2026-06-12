@@ -72,8 +72,8 @@ body {
 h1.font-serif-ko,
 h2.font-serif-ko,
 .heading-ko {
-  letter-spacing: 0.06em;
-  word-spacing: 0.04em;
+  letter-spacing: 0.1em;
+  word-spacing: 0.08em;
 }
 
 .tracking-brand {
