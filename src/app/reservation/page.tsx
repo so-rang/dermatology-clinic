@@ -64,7 +64,7 @@ export default function ReservationPage() {
               RESERVATION
             </span>
             <h1 className="font-serif-ko mt-3 text-4xl leading-tight text-balance md:text-5xl">
-              30분 무료 상담.
+              30분 무료 상담
             </h1>
             <p className="mt-6 max-w-md text-base text-ink-soft md:text-lg">
               전문의가 직접 상담합니다. 시술을 권하기 전에 피부를 먼저 읽습니다.

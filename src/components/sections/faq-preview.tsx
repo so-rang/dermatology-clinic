@@ -20,7 +20,7 @@ export function FaqPreview() {
             <h2 className="font-serif-ko mt-2 text-3xl md:text-5xl text-balance">
               자주 묻는
               <br />
-              질문.
+              질문
             </h2>
             <Link
               href="/faq"

@@ -46,7 +46,7 @@ export default function LocationPage() {
             LOCATION
           </span>
           <h1 className="font-serif-ko mt-3 text-4xl leading-tight md:text-6xl">
-            오시는 길.
+            오시는 길
           </h1>
           <p className="mt-6 max-w-2xl text-base text-ink-soft md:text-lg">
             {clinic.address} · {clinic.subway}

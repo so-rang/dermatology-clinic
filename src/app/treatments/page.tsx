@@ -29,7 +29,7 @@ export default function TreatmentsPage() {
             ATELIER PROTOCOL
           </span>
           <h1 className="font-serif-ko mt-3 text-4xl leading-tight text-balance md:text-6xl">
-            네 단계의 처방.
+            네 단계의 처방
           </h1>
           <p className="mt-6 max-w-2xl text-base text-ink-soft md:text-lg">
             진단으로부터 시작해 일상 위에 머무는 관리까지. 한 사람의 피부를 위해

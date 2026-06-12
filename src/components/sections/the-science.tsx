@@ -1,4 +1,5 @@
-import { Placeholder } from "@/components/common/placeholder";
+import Image from "next/image";
+import { abstractVisuals } from "@/lib/data/visuals";
 
 const data = [
   {
@@ -52,13 +53,15 @@ export function TheScience() {
           </div>
 
           <div className="md:col-span-2">
-            <Placeholder
-              ratio="portrait"
-              tone="terra"
-              label="Clinical Case"
-              caption="Case Study"
-              className="h-full"
-            />
+            <div className="relative aspect-[3/4] w-full overflow-hidden">
+              <Image
+                src={abstractVisuals.serum.src}
+                alt={abstractVisuals.serum.alt}
+                fill
+                sizes="(min-width: 768px) 40vw, 100vw"
+                className="object-cover"
+              />
+            </div>
             <p className="mt-3 text-[11px] text-bg-base/60">
               본 페이지의 일부 이미지·콘텐츠는 컨셉 시안용 AI로 제작되었습니다.
             </p>

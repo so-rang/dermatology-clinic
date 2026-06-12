@@ -10,7 +10,7 @@ export function LocationHours() {
             VISIT
           </span>
           <h2 className="font-serif-ko mt-2 text-3xl md:text-5xl">
-            오시는 길.
+            오시는 길
           </h2>
         </header>
 

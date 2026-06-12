@@ -47,7 +47,7 @@ export default function FaqPage() {
             FAQ
           </span>
           <h1 className="font-serif-ko mt-3 text-4xl leading-tight md:text-6xl">
-            자주 묻는 질문.
+            자주 묻는 질문
           </h1>
           <p className="mt-6 max-w-2xl text-base text-ink-soft md:text-lg">
             진료, 다운타임, 비용, 야간진료까지. 환자분들이 자주 묻는 질문을

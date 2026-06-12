@@ -1,9 +1,45 @@
+import Image from "next/image";
 import { SiteNav } from "@/components/common/site-nav";
 import { SiteFooter } from "@/components/common/site-footer";
 import { ReservationCta } from "@/components/sections/reservation-cta";
-import { Placeholder } from "@/components/common/placeholder";
 import { doctors } from "@/lib/data/doctors";
+import {
+  abstractVisuals,
+  equipmentVisuals,
+  spaceVisuals,
+} from "@/lib/data/visuals";
 import { breadcrumbLd, physiciansLd } from "@/lib/schemas/jsonld";
+
+const spaceGrid = [
+  {
+    label: "Lounge",
+    caption: "자연광 · 우드",
+    visual: spaceVisuals.lounge,
+    span: "md:col-span-4",
+    ratio: "aspect-[16/10]",
+  },
+  {
+    label: "Consult",
+    caption: "1:1 상담실",
+    visual: spaceVisuals.consult,
+    span: "md:col-span-2",
+    ratio: "aspect-square",
+  },
+  {
+    label: "Treatment",
+    caption: "시술실 · 4개",
+    visual: equipmentVisuals.ulthera,
+    span: "md:col-span-2",
+    ratio: "aspect-square",
+  },
+  {
+    label: "VIP Room",
+    caption: "프라이빗 케어",
+    visual: abstractVisuals.serum,
+    span: "md:col-span-4",
+    ratio: "aspect-[16/10]",
+  },
+] as const;
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -44,16 +80,22 @@ export default function AboutPage() {
           <p className="font-display tracking-brand text-xs text-terra">
             DOCTORS
           </p>
-          <h2 className="font-serif-ko mt-2 text-3xl md:text-4xl">의료진.</h2>
+          <h2 className="font-serif-ko mt-2 text-3xl md:text-4xl">의료진</h2>
           <ul className="mt-12 grid gap-12 md:grid-cols-3 md:gap-8">
             {doctors.map((d, i) => (
               <li key={d.id} className="border-t border-line pt-6">
-                <Placeholder
-                  ratio="portrait"
-                  tone="ink"
-                  label={d.nameEn.split(",")[0]}
-                  caption={`0${i + 1} · Dermatology`}
-                />
+                <div className="relative aspect-[3/4] w-full overflow-hidden bg-ink">
+                  <Image
+                    src={d.image}
+                    alt={`${d.nameKo} ${d.title}`}
+                    fill
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="object-cover grayscale"
+                  />
+                  <span className="absolute bottom-4 left-4 font-display tracking-brand text-[10px] text-bg-base/80">
+                    0{i + 1} · Dermatology
+                  </span>
+                </div>
                 <p className="font-display mt-5 text-[11px] tracking-brand text-terra">
                   {d.title.toUpperCase()}
                 </p>
@@ -84,7 +126,7 @@ export default function AboutPage() {
           <p className="font-display tracking-brand text-xs text-terra">
             SPACE
           </p>
-          <h2 className="font-serif-ko mt-2 text-3xl md:text-4xl">공간.</h2>
+          <h2 className="font-serif-ko mt-2 text-3xl md:text-4xl">공간</h2>
           <p className="mt-4 max-w-xl text-base text-ink-soft md:text-lg">
             자연광이 닿는 60평 규모의 공간. 라운지, 상담실, 시술실, VIP룸이 한
             개의 흐름으로 이어집니다.

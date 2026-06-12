@@ -66,7 +66,14 @@ body {
 .font-serif-ko {
   font-family: var(--font-serif), serif;
   font-weight: 400;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
+}
+
+h1.font-serif-ko,
+h2.font-serif-ko,
+.heading-ko {
+  letter-spacing: 0.06em;
+  word-spacing: 0.04em;
 }
 
 .tracking-brand {

@@ -13,7 +13,7 @@ export const doctors: readonly Doctor[] = [
     nameKo: "정연우",
     nameEn: "Jung Yeon-Woo, M.D.",
     title: "대표원장",
-    image: "/images/doctors/dr-jung.jpg",
+    image: "/images/doctors/jung.png",
     credentials: [
       "서울대학교 의과대학 졸업",
       "대한피부과학회 정회원",
@@ -27,7 +27,7 @@ export const doctors: readonly Doctor[] = [
     nameKo: "한서영",
     nameEn: "Han Seo-Young, M.D.",
     title: "부원장",
-    image: "/images/doctors/dr-han.jpg",
+    image: "/images/doctors/han.png",
     credentials: [
       "연세대학교 의과대학 졸업",
       "대한피부과학회 정회원",
@@ -41,7 +41,7 @@ export const doctors: readonly Doctor[] = [
     nameKo: "이도현",
     nameEn: "Lee Do-Hyun, M.D.",
     title: "부원장",
-    image: "/images/doctors/dr-lee.jpg",
+    image: "/images/doctors/lee.png",
     credentials: [
       "고려대학교 의과대학 졸업",
       "대한피부과학회 정회원",
