@@ -1,0 +1,448 @@
+{
+  "project": "anlie-derma",
+  "brand": "앤리에 의원 (Atelier Dermatology)",
+  "created": "2026-06-12",
+  "design_source": "docs/plans/designs/20260612-anlie-derma.md",
+  "market_source": ".agents/results/market/dermatology-clinic-homepage-20260612.md",
+  "target_url": "dermatology-clinic-*.vercel.app",
+  "deadline": "오후 3시 50분 (해커톤)",
+  "summary": {
+    "total_tasks": 22,
+    "p0_tasks": 16,
+    "p1_tasks": 3,
+    "p2_tasks": 3,
+    "estimated_total_hours": 17.5,
+    "estimated_p0_hours": 12.0,
+    "critical_path_hours": 9.5
+  },
+  "contracts": {
+    "design_tokens": {
+      "colors": {
+        "--bg-base": "#FAF8F4",
+        "--bg-soft": "#F2EFE9",
+        "--accent-sage": "#D9E4DC",
+        "--accent-terra": "#C97B5A",
+        "--ink-deep": "#2C3E36",
+        "--ink-soft": "#5C6A63",
+        "--line": "#E5DFD3"
+      },
+      "fonts": {
+        "head_ko": "Noto Serif KR",
+        "head_en": "EB Garamond italic",
+        "body": "Pretendard Variable"
+      },
+      "grid": "8px",
+      "container_max": "1280px",
+      "section_padding_y": "96-160px"
+    },
+    "routes": [
+      { "path": "/", "priority": "P0", "page": "Landing" },
+      { "path": "/admin", "priority": "P0", "page": "AEO Dashboard" },
+      { "path": "/admin/faq", "priority": "P0", "page": "FAQ Editor" },
+      { "path": "/admin/studio", "priority": "P0", "page": "Content Studio" },
+      { "path": "/treatments", "priority": "P1", "page": "Atelier Protocol Detail" },
+      { "path": "/about", "priority": "P1", "page": "Clinic & Doctors" },
+      { "path": "/faq", "priority": "P1", "page": "Full FAQ" },
+      { "path": "/location", "priority": "P2", "page": "Visit Info" },
+      { "path": "/reservation", "priority": "P2", "page": "Booking Mock" }
+    ],
+    "visual_assets": {
+      "doctors_bw": 3,
+      "space_warm": 5,
+      "equipment_macro": 4,
+      "product_macro": 4,
+      "abstract_texture": 3,
+      "still_life_accent": 2
+    },
+    "data_models": {
+      "Doctor": { "id": "string", "name_ko": "string", "name_en": "string", "title": "string", "credentials": "string[]", "image_url": "string" },
+      "Treatment": { "id": "string", "step": "01|02|03|04", "name_en": "string", "name_ko": "string", "headline_ko": "string", "copy": "string", "mechanism_svg": "string", "tags": "string[]" },
+      "FAQ": { "id": "string", "question": "string", "answer": "string", "category": "string", "schema_org": "FAQPage" }
+    }
+  },
+  "tasks": [
+    {
+      "id": "T01",
+      "agent": "frontend-engineer",
+      "title": "디자인 토큰 + 폰트 + Tailwind v4 글로벌 셋업",
+      "priority": "P0",
+      "dependencies": [],
+      "estimated_hours": 0.5,
+      "acceptance_criteria": [
+        "globals.css에 디자인 토큰 7개 CSS 변수 정의",
+        "next/font로 Pretendard Variable + Noto Serif KR + EB Garamond italic 로드",
+        "Tailwind v4 theme에 토큰 매핑 (bg-base, accent-sage, accent-terra, ink-deep 등)",
+        "layout.tsx에 html lang='ko' + meta + OG 설정",
+        "prefers-reduced-motion 글로벌 유틸 1개"
+      ]
+    },
+    {
+      "id": "T02",
+      "agent": "frontend-engineer",
+      "title": "공통 컴포넌트 (Nav, Footer, Button, Card, Badge, SectionHeader)",
+      "priority": "P0",
+      "dependencies": ["T01"],
+      "estimated_hours": 0.75,
+      "acceptance_criteria": [
+        "shadcn/ui Button 설치 + terracotta/sage variant",
+        "Nav: Atelier 로고 + 5메뉴 + 예약 CTA, 스크롤 시 배경 페이드",
+        "Footer: 주소·전화·운영시간·SNS·의료광고법 미세 디스클레이머",
+        "SectionHeader: 영문 eyebrow + 한글 H2 + 부제 슬롯",
+        "Card: 호버 y-4px + 세이지 라인 강조"
+      ]
+    },
+    {
+      "id": "T03",
+      "agent": "general-purpose (image)",
+      "title": "비주얼 자산 생성 (Higgsfield/oma-image, 약 21장)",
+      "priority": "P0",
+      "dependencies": ["T01"],
+      "estimated_hours": 1.0,
+      "acceptance_criteria": [
+        "의료진 3장 (B&W 모노 정면, 가슴 위 크롭, side light, gray seamless BG)",
+        "공간 5장 (자연광 + 세이지 액센트, warm LUT)",
+        "장비 4장 (VISIA·울쎄라·써마지·리쥬란 핸드피스 매크로)",
+        "제품 4장 (앰플·시린지·디스펜서 등 소프트 클로즈업)",
+        "추상 3장 (세럼 매크로 + 테라코타 틴트)",
+        "정물 2장 (돌·잎·유리·천)",
+        "모든 이미지 LUT 일관 후보정 적용",
+        "AI 디스클레이머 추가용 메타 정리",
+        "public/images/ 하위 카테고리별 폴더 정리"
+      ]
+    },
+    {
+      "id": "T04",
+      "agent": "frontend-engineer",
+      "title": "랜딩 Hero 섹션 (배경 영상 + H1 + CTA + 진입 모션)",
+      "priority": "P0",
+      "dependencies": ["T01", "T02"],
+      "estimated_hours": 1.0,
+      "acceptance_criteria": [
+        "<video> 풀-블리드 + filter grayscale(0.6) contrast(0.95) brightness(0.96)",
+        "Eyebrow `ATELIER · DERMATOLOGY · CHEONGDAM` (Garamond italic terracotta 14px tracking 0.2em)",
+        "H1 '당신만을 위한 / 피부의 공방.' (Noto Serif KR 72/44px)",
+        "Subhead 2줄 (영문 4단계 + 한글 신뢰 라인)",
+        "CTA 2개 (terracotta solid + sage ghost)",
+        "우측 하단 배지 '전문의 3인 직접 진료'",
+        "진입 모션: blur(12px)→0 + scale(1.04)→1 + variable weight 100→500, 0.8s",
+        "prefers-reduced-motion 시 모션 비활성"
+      ]
+    },
+    {
+      "id": "T05",
+      "agent": "frontend-engineer",
+      "title": "Atelier 프로토콜 Sticky Scroll Storytelling 섹션",
+      "priority": "P0",
+      "dependencies": ["T01", "T02"],
+      "estimated_hours": 2.0,
+      "acceptance_criteria": [
+        "Lenis + GSAP ScrollTrigger 셋업 (lenis/react, useGSAP)",
+        "ScrollTrigger pin으로 좌측 레이블 01→02→03→04 수직 이동",
+        "우측 SVG 메커니즘 일러스트 + 카피 4개 교체 (Diagnosis/Regeneration/Restoration/Maintenance)",
+        "각 카드 한글 헤드 + 카피 + 시술 태그 정확히 디자인 문서 5.2 표대로",
+        "하단 프로그레스 바 25→50→75→100%",
+        "모바일 폴백: 세로 스태킹 4카드 + 스태거 페이드",
+        "prefers-reduced-motion 시 스태킹 모드로 강제 전환"
+      ]
+    },
+    {
+      "id": "T06",
+      "agent": "frontend-engineer",
+      "title": "Doctors Preview 섹션 (3카드 균등 그리드)",
+      "priority": "P0",
+      "dependencies": ["T02", "T03"],
+      "estimated_hours": 0.75,
+      "acceptance_criteria": [
+        "3카드 균등 그리드 (모바일 세로 스택)",
+        "각 카드: B&W 인물 컷 + 한글/영문 이름 + 직책 + 이력 4줄",
+        "전문분야 매칭 표시 없음 (이름 + 이력만)",
+        "호버 y-4px + 세이지 라인",
+        "섹션 H2 'Doctors' + 부제 '전문의 3인 직접 진료'",
+        "풋 '의료진 더 보기 →' → /about"
+      ]
+    },
+    {
+      "id": "T07",
+      "agent": "frontend-engineer",
+      "title": "Space & Tech 섹션",
+      "priority": "P0",
+      "dependencies": ["T02", "T03"],
+      "estimated_hours": 0.75,
+      "acceptance_criteria": [
+        "H2 'Space & Tech' + 부제 '공간과 장비' (간소 톤)",
+        "좌 1/3 공간 시네그래프 1장",
+        "우 2/3 장비 매크로 2x2 그리드 4장",
+        "장비 라벨: VISIA 7-mode · Ulthera · Thermage FLX · 리쥬란 핸드피스"
+      ]
+    },
+    {
+      "id": "T08",
+      "agent": "frontend-engineer",
+      "title": "The Science 섹션",
+      "priority": "P0",
+      "dependencies": ["T02", "T03"],
+      "estimated_hours": 0.75,
+      "acceptance_criteria": [
+        "H2 'The Science' + 부제 카피",
+        "좌 데이터 인포그래픽 3카드 (VISIA / HIFU 깊이 / PN 분자량)",
+        "우 임상 매크로 이미지 1장",
+        "하단 미세 디스클레이머 'AI로 제작 일부 포함'"
+      ]
+    },
+    {
+      "id": "T09",
+      "agent": "frontend-engineer",
+      "title": "FAQ Preview 섹션 (Accordion 5개)",
+      "priority": "P0",
+      "dependencies": ["T02"],
+      "estimated_hours": 0.5,
+      "acceptance_criteria": [
+        "shadcn/ui Accordion 5개 (디자인 문서 5.6 질문 그대로)",
+        "각 답변 100-200자 + '개인차 있음 / 전문의 상담 권장' 디스클레이머",
+        "JSON-LD FAQPage 스키마 자동 출력",
+        "'전체 FAQ 보기 →' /faq 링크"
+      ]
+    },
+    {
+      "id": "T10",
+      "agent": "frontend-engineer",
+      "title": "Location & Hours 섹션",
+      "priority": "P0",
+      "dependencies": ["T02"],
+      "estimated_hours": 0.75,
+      "acceptance_criteria": [
+        "H2 '오시는 길'",
+        "좌 60% 지도 (정적 이미지 + 마커 OR 네이버맵 iframe)",
+        "우 40% 주소·전화·운영시간·야간진료·주차·지하철",
+        "야간진료(화·목 21:00)와 주차 발렛 명시"
+      ]
+    },
+    {
+      "id": "T11",
+      "agent": "frontend-engineer",
+      "title": "Reservation CTA Footer 섹션",
+      "priority": "P0",
+      "dependencies": ["T02"],
+      "estimated_hours": 0.5,
+      "acceptance_criteria": [
+        "풀-블리드 + 미세 테라코타 그라데이션",
+        "H2 '처음 만나는 자리, 가장 신중하게.'",
+        "부카피 '전문의 직접 상담 · 피부 분석 무료 · 30분 충분히'",
+        "3채널 CTA (예약 / 카톡 / 전화)"
+      ]
+    },
+    {
+      "id": "T12",
+      "agent": "frontend-engineer",
+      "title": "/admin Dashboard (AEO 대시보드 목업)",
+      "priority": "P0",
+      "dependencies": ["T02"],
+      "estimated_hours": 1.5,
+      "acceptance_criteria": [
+        "AEO 점수 게이지 84/100 (원자도형 차트, mock)",
+        "최근 7일 AEO 쿼리 트렌드 라인차트 (mock 데이터)",
+        "제안 액션 카드 3장",
+        "시술 페이지별 점수 테이블 4행",
+        "사이드바 네비 (Dashboard / FAQ Editor / Content Studio)",
+        "어드민 톤은 클리닉 톤 유지하되 데이터 표시 컬러는 슬레이트/세이지 위주"
+      ]
+    },
+    {
+      "id": "T13",
+      "agent": "frontend-engineer",
+      "title": "/admin/faq FAQ Editor (목업)",
+      "priority": "P0",
+      "dependencies": ["T12"],
+      "estimated_hours": 1.0,
+      "acceptance_criteria": [
+        "좌측 FAQ 리스트 (5-10개 mock)",
+        "우측 인라인 에디터 (질문/답변 textarea)",
+        "Schema.org JSON 프리뷰 코드 블록 우측 하단",
+        "Save 클릭 시 토스트만 표시 (mock)",
+        "추가/삭제 버튼 (mock)"
+      ]
+    },
+    {
+      "id": "T14",
+      "agent": "frontend-engineer",
+      "title": "/admin/studio Content Studio (목업)",
+      "priority": "P0",
+      "dependencies": ["T12"],
+      "estimated_hours": 1.0,
+      "acceptance_criteria": [
+        "AI 추천 제목 카드 3장 (mock)",
+        "콘텐츠 textarea + 우측 AEO 원자도 차트 (textarea 입력 시 점수 mock 반응)",
+        "'AI 답변 최적화 콘텐츠 작성' 헤더 카피",
+        "Generate 버튼 (mock)"
+      ]
+    },
+    {
+      "id": "T15",
+      "agent": "backend-engineer",
+      "title": "JSON-LD 스키마 + sitemap.xml + robots.txt",
+      "priority": "P0",
+      "dependencies": ["T04", "T06", "T09"],
+      "estimated_hours": 0.5,
+      "acceptance_criteria": [
+        "MedicalClinic 루트 스키마 (주소·전화·운영시간)",
+        "Physician × 3 (의료진)",
+        "MedicalProcedure × N (Atelier 프로토콜)",
+        "FAQPage 전체 FAQ",
+        "BreadcrumbList",
+        "app/sitemap.ts + app/robots.ts",
+        "Google Rich Results Test 통과"
+      ]
+    },
+    {
+      "id": "T16",
+      "agent": "frontend-engineer",
+      "title": "/treatments 페이지 (Atelier 프로토콜 상세)",
+      "priority": "P1",
+      "dependencies": ["T05"],
+      "estimated_hours": 1.5,
+      "acceptance_criteria": [
+        "4단계 각각 상세 섹션 (메커니즘 다이어그램 큰 버전)",
+        "시술별 설명 + 다운타임 + 시술 시간 + 주기 표",
+        "JSON-LD MedicalProcedure",
+        "예약 CTA 푸터 재사용"
+      ]
+    },
+    {
+      "id": "T17",
+      "agent": "frontend-engineer",
+      "title": "/about 페이지 (의료진·공간)",
+      "priority": "P1",
+      "dependencies": ["T06", "T07"],
+      "estimated_hours": 1.0,
+      "acceptance_criteria": [
+        "의료진 3명 상세 (랜딩 카드 확장 — 이력 풀버전)",
+        "공간 갤러리 5장 (자연광 컬러)",
+        "병원 철학 한 단락"
+      ]
+    },
+    {
+      "id": "T18",
+      "agent": "frontend-engineer",
+      "title": "/faq 페이지 (전체 FAQ + 카테고리 필터)",
+      "priority": "P1",
+      "dependencies": ["T09"],
+      "estimated_hours": 0.75,
+      "acceptance_criteria": [
+        "FAQ 15+개 (Diagnosis/Regeneration/Restoration/Maintenance/일반 5카테고리)",
+        "카테고리 칩 필터",
+        "JSON-LD FAQPage 풀",
+        "검색 입력 (클라이언트 필터)"
+      ]
+    },
+    {
+      "id": "T19",
+      "agent": "frontend-engineer",
+      "title": "/location 페이지",
+      "priority": "P2",
+      "dependencies": ["T10"],
+      "estimated_hours": 0.5,
+      "acceptance_criteria": [
+        "지도 큰 버전",
+        "도보·지하철·버스·자가용 안내 4섹션",
+        "주차 안내 상세"
+      ]
+    },
+    {
+      "id": "T20",
+      "agent": "frontend-engineer",
+      "title": "/reservation 페이지 (예약 폼 목업)",
+      "priority": "P2",
+      "dependencies": ["T02"],
+      "estimated_hours": 1.0,
+      "acceptance_criteria": [
+        "이름·전화·희망일·시술 카테고리 select·메모 textarea",
+        "react-hook-form + zod 검증",
+        "submit 시 토스트만 (mock, API 없음)",
+        "Atelier 프로토콜 4단계 select 옵션"
+      ]
+    },
+    {
+      "id": "T21",
+      "agent": "tf-infra-engineer",
+      "title": "Vercel Production 배포 및 검수",
+      "priority": "P0",
+      "dependencies": ["T15"],
+      "estimated_hours": 0.5,
+      "acceptance_criteria": [
+        "main 푸시 → Vercel 자동 배포 확인",
+        "Production URL 모바일+데스크톱 정상 동작",
+        "Lighthouse Performance ≥ 85, Accessibility ≥ 95",
+        "JSON-LD Rich Results Test 통과",
+        "의료광고법 금지 표현 grep ('1위','최고','유일','보장') 0건",
+        "다른 두 트랙(치과·한의원)과 톤 차별화 비교"
+      ]
+    },
+    {
+      "id": "T22",
+      "agent": "qa-reviewer",
+      "title": "최종 QA + 의료광고법 준수 검수",
+      "priority": "P0",
+      "dependencies": ["T21"],
+      "estimated_hours": 0.5,
+      "acceptance_criteria": [
+        "OWASP 기본 (XSS, CSP) 체크",
+        "WCAG AA (대비 4.5:1+, 포커스 visible, alt 텍스트)",
+        "의료광고법 5가지 금지 표현 grep + AI 디스클레이머 1회 확인",
+        "INP/LCP/CLS 측정 (Core Web Vitals)",
+        "Reduced motion 테스트"
+      ]
+    }
+  ],
+  "critical_path": [
+    "T01 → T02 → T04/T05 (병렬) → T15 → T21 → T22",
+    "병렬 가능: T03 (T01 직후), T06–T14 (T02 후 동시)"
+  ],
+  "parallelization": {
+    "wave_1": ["T01"],
+    "wave_2": ["T02", "T03"],
+    "wave_3_landing_sections": ["T04", "T05", "T06", "T07", "T08", "T09", "T10", "T11"],
+    "wave_3_admin": ["T12"],
+    "wave_4": ["T13", "T14", "T15"],
+    "wave_5_p1": ["T16", "T17", "T18"],
+    "wave_6_p2": ["T19", "T20"],
+    "wave_7_deploy": ["T21", "T22"]
+  },
+  "risks": [
+    {
+      "id": "R01",
+      "severity": "HIGH",
+      "description": "Sticky Scroll Storytelling (T05)이 2시간 추정인데 GSAP+Lenis 학습/디버깅이 길어질 수 있음",
+      "mitigation": "T05 1.5시간 타임박스. 초과 시 정적 4카드 그리드로 폴백 결정 게이트."
+    },
+    {
+      "id": "R02",
+      "severity": "HIGH",
+      "description": "비주얼 자산 21장 생성(T03)이 Higgsfield 응답 시간/품질 편차로 지연될 수 있음",
+      "mitigation": "P0 필수만 먼저 (의료진 3 + 히어로 배경 1 + 장비 4 = 8장). 나머지는 Pexels/Unsplash 스톡으로 즉시 대체 가능 폴백."
+    },
+    {
+      "id": "R03",
+      "severity": "MEDIUM",
+      "description": "Next.js 16 breaking changes (proxy.ts, motion/react)로 학습 지연",
+      "mitigation": "AGENTS.md 지시대로 node_modules/next/dist/docs/ 참조. 의문 시 즉시 확인."
+    },
+    {
+      "id": "R04",
+      "severity": "MEDIUM",
+      "description": "의료광고법 위반 표현이 카피에 섞일 위험",
+      "mitigation": "T22에서 grep 자동화. 카피 작성 시 '1위·최고·유일·보장·완치·100%' 금지어 사전 체크."
+    },
+    {
+      "id": "R05",
+      "severity": "LOW",
+      "description": "Vercel 첫 배포 시 환경변수/도메인 이슈",
+      "mitigation": "handoff.md에 따라 Vercel 프로젝트 이미 링크됨. 첫 푸시로 검증."
+    }
+  ],
+  "out_of_scope": [
+    "실제 백엔드 API (예약/문의 모두 mock)",
+    "실제 결제·인증",
+    "다국어 (한국어만)",
+    "Three.js / R3F (히어로 3D 옵션은 컨셉에서 제외됨)"
+  ]
+}

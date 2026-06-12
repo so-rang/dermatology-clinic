@@ -1,26 +1,98 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Pretendard Variable";
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/woff2/PretendardVariable.woff2")
+    format("woff2-variations");
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-base: #faf8f4;
+  --bg-soft: #f2efe9;
+  --accent-sage: #d9e4dc;
+  --accent-sage-deep: #b6c8bd;
+  --accent-terra: #c97b5a;
+  --accent-terra-deep: #a85d3f;
+  --ink-deep: #2c3e36;
+  --ink-soft: #5c6a63;
+  --ink-mute: #94a09a;
+  --line: #e5dfd3;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg-base: var(--bg-base);
+  --color-bg-soft: var(--bg-soft);
+  --color-sage: var(--accent-sage);
+  --color-sage-deep: var(--accent-sage-deep);
+  --color-terra: var(--accent-terra);
+  --color-terra-deep: var(--accent-terra-deep);
+  --color-ink: var(--ink-deep);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-mute: var(--ink-mute);
+  --color-line: var(--line);
+
+  --font-sans: "Pretendard Variable", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-noto-serif-kr), serif;
+  --font-display: var(--font-garamond), serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  background: var(--bg-base);
+  color: var(--ink-deep);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "ss02";
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-feature-settings: "ss01" on;
+}
+
+::selection {
+  background: var(--accent-terra);
+  color: var(--bg-base);
+}
+
+.font-display {
+  font-family: var(--font-display), serif;
+  font-style: italic;
+}
+
+.font-serif-ko {
+  font-family: var(--font-serif), serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.tracking-brand {
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.hero-video {
+  filter: grayscale(0.55) contrast(0.95) brightness(0.96) sepia(0.08);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
 }
