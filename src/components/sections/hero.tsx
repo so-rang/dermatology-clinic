@@ -104,7 +104,7 @@ export function Hero() {
               Diagnosis · Regeneration · Restoration · Maintenance
             </p>
             <p className="text-sm text-bg-base/70 md:text-base">
-              청담 피부과 · 전문의 3인 직접 진료
+              청담 피부과 · 1:1 맞춤 처방
             </p>
           </motion.div>
 
@@ -115,7 +115,7 @@ export function Hero() {
             className="mt-10 flex flex-wrap gap-3"
           >
             <Button asChild variant="terra" size="lg">
-              <Link href="#protocol">당신의 4단계 처방</Link>
+              <Link href="#protocol">처방 살펴보기</Link>
             </Button>
             <Button
               asChild
