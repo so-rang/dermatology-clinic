@@ -3,11 +3,7 @@ import { SiteNav } from "@/components/common/site-nav";
 import { SiteFooter } from "@/components/common/site-footer";
 import { ReservationCta } from "@/components/sections/reservation-cta";
 import { doctors } from "@/lib/data/doctors";
-import {
-  abstractVisuals,
-  equipmentVisuals,
-  spaceVisuals,
-} from "@/lib/data/visuals";
+import { spaceVisuals } from "@/lib/data/visuals";
 import { breadcrumbLd, physiciansLd } from "@/lib/schemas/jsonld";
 
 const spaceGrid = [
@@ -28,14 +24,21 @@ const spaceGrid = [
   {
     label: "Treatment",
     caption: "시술실 · 4개",
-    visual: equipmentVisuals.ulthera,
+    visual: spaceVisuals.treatment,
     span: "md:col-span-2",
     ratio: "aspect-square",
   },
   {
-    label: "VIP Room",
+    label: "VIP Suite",
     caption: "프라이빗 케어",
-    visual: abstractVisuals.serum,
+    visual: spaceVisuals.vip,
+    span: "md:col-span-2",
+    ratio: "aspect-square",
+  },
+  {
+    label: "Corridor",
+    caption: "아치 윈도우",
+    visual: spaceVisuals.corridor,
     span: "md:col-span-4",
     ratio: "aspect-[16/10]",
   },
@@ -132,34 +135,28 @@ export default function AboutPage() {
             개의 흐름으로 이어집니다.
           </p>
           <div className="mt-10 grid gap-4 md:grid-cols-6">
-            <Placeholder
-              ratio="wide"
-              tone="soft"
-              label="Lounge"
-              caption="자연광 · 우드"
-              className="md:col-span-4"
-            />
-            <Placeholder
-              ratio="square"
-              tone="sage"
-              label="Consult"
-              caption="1:1 상담실"
-              className="md:col-span-2"
-            />
-            <Placeholder
-              ratio="square"
-              tone="terra"
-              label="Treatment"
-              caption="시술실 · 4개"
-              className="md:col-span-2"
-            />
-            <Placeholder
-              ratio="wide"
-              tone="soft"
-              label="VIP Room"
-              caption="프라이빗 케어"
-              className="md:col-span-4"
-            />
+            {spaceGrid.map((slot) => (
+              <figure
+                key={slot.label}
+                className={`relative overflow-hidden bg-bg-soft ${slot.span} ${slot.ratio}`}
+              >
+                <Image
+                  src={slot.visual.src}
+                  alt={slot.visual.alt}
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover"
+                />
+                <figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-gradient-to-t from-ink/60 to-transparent p-4 text-bg-base">
+                  <span className="font-display text-lg italic">
+                    {slot.label}
+                  </span>
+                  <span className="font-display tracking-brand text-[10px] opacity-80">
+                    {slot.caption}
+                  </span>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </section>
 

@@ -5,6 +5,13 @@ export type VisualAsset = {
   height: number;
 };
 
+export const heroVisual = {
+  src: "/images/hero/hero-bg.png",
+  alt: "앤리에 의원 로비 — 따뜻한 골든아워 라이트와 세럼톤 인테리어",
+  width: 1536,
+  height: 864,
+} as const satisfies VisualAsset;
+
 export const spaceVisuals = {
   lounge: {
     src: "/images/space/lounge.png",
@@ -17,6 +24,24 @@ export const spaceVisuals = {
     alt: "앤리에 의원 1:1 상담실 — 월넛 데스크와 사이드 윈도우 라이트",
     width: 1536,
     height: 1024,
+  },
+  treatment: {
+    src: "/images/space/treatment.png",
+    alt: "앤리에 의원 시술실 — 리넨 베드와 세이지 커튼의 자연광",
+    width: 1152,
+    height: 1536,
+  },
+  vip: {
+    src: "/images/space/vip.png",
+    alt: "앤리에 의원 VIP 프라이빗 스위트 — 베이지 트라버틴과 화이트 오키드",
+    width: 1152,
+    height: 1536,
+  },
+  corridor: {
+    src: "/images/space/corridor.png",
+    alt: "앤리에 의원 복도 — 아치 윈도우와 세라믹 조형물",
+    width: 1536,
+    height: 864,
   },
 } as const satisfies Record<string, VisualAsset>;
 
@@ -54,7 +79,19 @@ export const abstractVisuals = {
     width: 1536,
     height: 864,
   },
+  serumGlass: {
+    src: "/images/abstract/serum-glass.png",
+    alt: "유리 세럼 보틀 매크로 — 사이드 라이트와 부드러운 보케",
+    width: 1024,
+    height: 1024,
+  },
+  lightPattern: {
+    src: "/images/abstract/light-pattern.png",
+    alt: "프로스티드 글래스를 통과하는 골든아워 라이트 패턴",
+    width: 1536,
+    height: 864,
+  },
 } as const satisfies Record<string, VisualAsset>;
 
 export const aiDisclaimer =
-  "본 페이지의 일부 이미지는 AI(GPT Image)로 제작되었습니다.";
+  "본 페이지의 일부 이미지는 AI(Higgsfield Soul Cinematic)로 제작되었습니다.";

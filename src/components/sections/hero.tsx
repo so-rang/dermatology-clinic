@@ -1,25 +1,36 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { clinic } from "@/lib/data/clinic";
+import { heroVisual } from "@/lib/data/visuals";
 
 export function Hero() {
   const reduced = useReducedMotion();
   return (
     <section className="relative isolate min-h-[100svh] w-full overflow-hidden bg-ink">
-      {/* Background — animated gradient + grain */}
+      {/* Background — photo + warm overlays */}
       <div className="absolute inset-0 -z-10">
+        <Image
+          src={heroVisual.src}
+          alt={heroVisual.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+          style={{ filter: "brightness(0.78) contrast(1.02) saturate(0.9)" }}
+        />
         <div
-          className="absolute inset-0 hero-video"
+          className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(60% 50% at 20% 30%, #C97B5A33 0%, transparent 60%), radial-gradient(50% 50% at 80% 70%, #D9E4DC22 0%, transparent 60%), linear-gradient(140deg, #2C3E36 0%, #1A2622 60%, #2C3E36 100%)",
+              "linear-gradient(180deg, rgba(26,38,34,0.45) 0%, rgba(26,38,34,0.25) 35%, rgba(26,38,34,0.7) 100%)",
           }}
         />
         <motion.div
-          className="absolute inset-0"
+          className="absolute inset-0 mix-blend-overlay"
           initial={reduced ? false : { opacity: 0.3 }}
           animate={
             reduced
@@ -29,15 +40,15 @@ export function Hero() {
                   backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
                 }
           }
-          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
           style={{
             background:
-              "conic-gradient(from 120deg at 40% 60%, transparent 0deg, #C97B5A22 90deg, transparent 180deg, #D9E4DC15 270deg, transparent 360deg)",
+              "conic-gradient(from 120deg at 40% 60%, transparent 0deg, #C97B5A33 90deg, transparent 180deg, #D9E4DC22 270deg, transparent 360deg)",
             backgroundSize: "180% 180%",
           }}
         />
         <svg
-          className="absolute inset-0 h-full w-full opacity-[0.18] mix-blend-overlay"
+          className="absolute inset-0 h-full w-full opacity-[0.12] mix-blend-overlay"
           xmlns="http://www.w3.org/2000/svg"
         >
           <filter id="hero-grain">
