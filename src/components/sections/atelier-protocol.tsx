@@ -1,40 +1,75 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { protocol } from "@/lib/data/protocol";
 import { MechanismByKey } from "@/components/sections/mechanism-svg";
 import { cn } from "@/lib/utils";
 
+const AUTOPLAY_MS = 5000;
+
 export function AtelierProtocol() {
   const [active, setActive] = useState(0);
   const [dir, setDir] = useState<1 | -1>(1);
+  const [paused, setPaused] = useState(false);
   const reduced = useReducedMotion();
   const total = protocol.length;
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   function go(next: number) {
     const n = ((next % total) + total) % total;
-    setDir(n > active ? 1 : -1);
+    setDir(n > active || (active === total - 1 && n === 0) ? 1 : -1);
     setActive(n);
   }
+
+  // Autoplay
+  useEffect(() => {
+    if (reduced || paused) return;
+    timerRef.current = setTimeout(() => {
+      setDir(1);
+      setActive((p) => (p + 1) % total);
+    }, AUTOPLAY_MS);
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, [active, paused, reduced, total]);
 
   const current = protocol[active];
 
   return (
-    <section className="bg-bg-base">
+    <section
+      className="bg-bg-base"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
       <div className="mx-auto max-w-[1280px] px-6 py-24 md:px-10 md:py-32 lg:px-20">
-        <header className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <header className="flex items-end justify-between gap-6">
           <div>
             <span className="font-display tracking-brand text-xs text-terra">
               ATELIER PROTOCOL
             </span>
             <h2 className="font-serif-ko mt-2 text-3xl md:text-5xl text-balance">
-              네 단계의 처방.
+              네 단계의 처방
             </h2>
           </div>
-          <p className="font-display text-sm italic text-ink-soft">
-            한 사람의 피부를 위한, 네 단계의 흐름.
-          </p>
+          <div className="flex shrink-0 gap-2">
+            <button
+              type="button"
+              onClick={() => go(active - 1)}
+              aria-label="이전 단계"
+              className="flex h-11 w-11 items-center justify-center border border-line text-ink-soft transition-colors hover:border-ink hover:text-ink md:h-12 md:w-12"
+            >
+              ←
+            </button>
+            <button
+              type="button"
+              onClick={() => go(active + 1)}
+              aria-label="다음 단계"
+              className="flex h-11 w-11 items-center justify-center border border-terra bg-terra text-bg-base transition-colors hover:bg-terra-deep md:h-12 md:w-12"
+            >
+              →
+            </button>
+          </div>
         </header>
 
         {/* Step rail */}
@@ -144,43 +179,35 @@ export function AtelierProtocol() {
           </AnimatePresence>
         </div>
 
-        {/* Controls */}
-        <div className="mt-10 flex items-center justify-between border-t border-line pt-6">
-          <div className="flex items-center gap-2">
-            {protocol.map((p, i) => (
-              <button
-                key={p.id}
-                type="button"
-                onClick={() => go(i)}
-                aria-label={`${p.nameEn} 단계로 이동`}
-                className={cn(
-                  "h-1 transition-all duration-300",
-                  i === active ? "w-10 bg-terra" : "w-6 bg-line",
-                )}
-              />
-            ))}
-            <span className="ml-4 font-display tabular-nums text-xs text-ink-mute">
-              0{active + 1} / 0{total}
-            </span>
-          </div>
-          <div className="flex gap-2">
+        {/* Indicator */}
+        <div className="mt-10 flex items-center gap-2 border-t border-line pt-6">
+          {protocol.map((p, i) => (
             <button
+              key={p.id}
               type="button"
-              onClick={() => go(active - 1)}
-              aria-label="이전 단계"
-              className="flex h-11 w-11 items-center justify-center border border-line text-ink-soft transition-colors hover:border-ink hover:text-ink"
+              onClick={() => go(i)}
+              aria-label={`${p.nameEn} 단계로 이동`}
+              className="group relative h-3 overflow-hidden"
+              style={{ width: i === active ? 56 : 28 }}
             >
-              ←
+              <span className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-line" />
+              {i === active ? (
+                <motion.span
+                  key={`bar-${active}-${paused}`}
+                  className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-terra"
+                  initial={{ scaleX: 0, transformOrigin: "left" }}
+                  animate={{ scaleX: reduced || paused ? 1 : [0, 1] }}
+                  transition={{
+                    duration: reduced || paused ? 0 : AUTOPLAY_MS / 1000,
+                    ease: "linear",
+                  }}
+                />
+              ) : null}
             </button>
-            <button
-              type="button"
-              onClick={() => go(active + 1)}
-              aria-label="다음 단계"
-              className="flex h-11 w-11 items-center justify-center border border-terra bg-terra text-bg-base transition-colors hover:bg-terra-deep"
-            >
-              →
-            </button>
-          </div>
+          ))}
+          <span className="ml-4 font-display tabular-nums text-xs text-ink-mute">
+            0{active + 1} / 0{total}
+          </span>
         </div>
       </div>
     </section>
